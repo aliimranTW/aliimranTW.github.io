@@ -1,34 +1,44 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle:  PhD Candidate in Robotics at <a href='https://initrobots.ca'>Lab INIT Robots</a>.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Lab INIT Robots, ETS Montreal</p>
+    <p>Quebec, Canada</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  enabled: false # includes a list of news items
+  scrollable: false # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  enabled: false
+  scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hello! I am Ali, and I work on making robots that can safely and reliably operate in spaces shared with people. My research sits at the intersection of human-centric robotics, multi-robot systems and swarm intelligence.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am currently a PhD candidate at <a href='https://initrobots.ca'>Lab INIT Robots</a>, supervised by Professor <a href='https://initrobots.ca/en/team/david-st-onge'>David St-Onge</a>, with Professor <a href='https://mila.quebec/en/directory/giovanni-beltrame'>Giovanni Beltrame</a> as my co-supervisor. Before this, I completed my Master’s in Robotics at the University of Bristol, where I had the opportunity to work on swarm robotics with the <a href='https://hauertlab.com/'>Hauert Lab</a>. I earned my Bachelor’s in Electronic Engineering from Ghulam Ishaq Khan Institute <a href='https://giki.edu.pk/'>(GIKI)</a> of Engineering Sciences and Technology in Pakistan.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<!-- My technical experience ranges from developing AI algorithms and optimizing them for deployment on embedded hardware (e.g., NVIDIA Jetson), to robot hardware development and rapid prototyping. I also enjoy teaching and mentoring, and I’ve had the chance to teach robotics to undergraduate students and supervise master’s students. -->
+
+<!-- Broadly, my work focuses on human-centric robotics in shared environments. I use decentralized robot teams for collaborative perception—moving from spatio-temporal human intent prediction to joint human–robot state estimation for decentralized human motion modeling and navigation. By combining multimodal sensing with decentralized learning, I aim to build richer scene understanding and enable robust, safety-aware coordination, validated on real multi-robot systems. -->
+
+<!-- My technical experience spans developing AI algorithms and deploying them on embedded hardware (e.g., NVIDIA Jetson), as well as robot hardware development and rapid prototyping. I also enjoy teaching and mentoring, and I have taught robotics to undergraduates and supervised master’s students. Broadly, my research focuses on human-centric robotics in shared environments, using decentralized robot teams for collaborative perception—from spatio-temporal human intent prediction to joint human–robot state estimation for decentralized human motion modeling and navigation. By combining multimodal sensing with decentralized learning, I aim to build richer scene understanding and enable robust, safety-aware coordination, validated on real multi-robot systems. -->
+
+
+I build human-centric multi-robot systems that can operate safely in shared spaces. My work combines AI for collaborative perception with real-world deployment—often on embedded hardware (e.g., NVIDIA Jetson)—and hands-on robot prototyping. I also enjoy teaching and mentoring. I have taught robotics to undergraduates and supervised master’s students.
+
+Move your mouse around to play with the swarm. Watch them flock using simple swarming rules like attraction and repulsion. :)
+
+<!-- I work on human-centric multi-robot systems that can operate safely around people. I build and deploy AI for perception and prediction on real robots (often on embedded hardware like NVIDIA Jetson), and I enjoy teaching and mentoring. -->

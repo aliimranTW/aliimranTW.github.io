@@ -22,10 +22,6 @@ Here we will give you some tips on how to customize the website. One important t
     - [Build and Deployment](#build-and-deployment)
     - [Key Integration Points](#key-integration-points)
   - [Modifying the CV information](#modifying-the-cv-information)
-    - [RenderCV Format (Recommended)](#rendercv-format-recommended)
-    - [JSONResume Format](#jsonresume-format)
-    - [Using Both Formats Simultaneously](#using-both-formats-simultaneously)
-    - [Automatic PDF Generation (RenderCV only)](#automatic-pdf-generation-rendercv-only)
   - [Modifying the user and repository information](#modifying-the-user-and-repository-information)
     - [Configuring external service URLs](#configuring-external-service-urls)
   - [Creating new pages](#creating-new-pages)
@@ -33,14 +29,6 @@ Here we will give you some tips on how to customize the website. One important t
   - [Creating new projects](#creating-new-projects)
   - [Adding some news](#adding-some-news)
   - [Adding Collections](#adding-collections)
-    - [Creating a new collection](#creating-a-new-collection)
-    - [Using frontmatter fields in your collection](#using-frontmatter-fields-in-your-collection)
-    - [Creating a teachings collection](#creating-a-teachings-collection)
-      - [Course file format](#course-file-format)
-      - [Important course collection notes](#important-course-collection-notes)
-      - [Required fields](#required-fields)
-      - [Optional fields](#optional-fields)
-    - [Collections with categories and tags](#collections-with-categories-and-tags)
   - [Adding a new publication](#adding-a-new-publication)
     - [Author annotation](#author-annotation)
     - [Buttons (through custom bibtex keywords)](#buttons-through-custom-bibtex-keywords)
@@ -50,10 +38,6 @@ Here we will give you some tips on how to customize the website. One important t
   - [Adding a newsletter](#adding-a-newsletter)
   - [Configuring search features](#configuring-search-features)
   - [Managing publication display](#managing-publication-display)
-  - [Adding a Google Calendar](#adding-a-google-calendar)
-    - [Basic usage](#basic-usage)
-    - [Enable the calendar script for your page](#enable-the-calendar-script-for-your-page)
-    - [Optional: Customize the calendar style](#optional-customize-the-calendar-style)
   - [Updating third-party libraries](#updating-third-party-libraries)
   - [Removing content](#removing-content)
     - [Removing the blog page](#removing-the-blog-page)
@@ -100,21 +84,11 @@ The project is structured as follows, focusing on the main components that you w
 ├── 📂 _posts/: contains the blog posts
 ├── 📂 _projects/: contains the projects
 └── 📂 _sass/: contains the SASS files that define the style of the website
-    ├── 📂 font-awesome/: contains the SCSS files for Font Awesome
-    ├── 📄 _blog.scss: blog post, tags, and pagination styles
-    ├── 📄 _components.scss: reusable component styles (cards, profiles, CV, projects)
+    ├── 📄 _base.scss: base style of the website
     ├── 📄 _cv.scss: style of the CV page
     ├── 📄 _distill.scss: style of the Distill articles
-    ├── 📄 _footer.scss: footer styles
-    ├── 📄 _layout.scss: overall layout styles
-    ├── 📄 _navbar.scss: navigation bar and dropdown menu styles
-    ├── 📄 _publications.scss: publication list and bibliography styles
-    ├── 📄 _tabs.scss: tabbed content styles
-    ├── 📄 _teachings.scss: course and teaching styles
-    ├── 📄 _themes.scss: theme colors and icons
-    ├── 📄 _typograms.scss: typogram diagram styles
-    ├── 📄 _typography.scss: text, headings, links, tables, and blockquote styles
-    ├── 📄 _utilities.scss: utility styles (code highlighting, forms, modals, animations)
+    ├── 📄 _layout.scss: style of the overall layout
+    ├── 📄 _themes.scss: themes colors and a few icons
     └── 📄 _variables.scss: variables used in the SASS files
 ```
 
@@ -125,16 +99,6 @@ The configuration file [\_config.yml](_config.yml) contains the main configurati
 > Note that the `url` and `baseurl` settings are used to generate the links of the website, as explained in the [install instructions](INSTALL.md).
 
 All changes made to this file are only visible after you rebuild the website. That means that you need to run `bundle exec jekyll serve` again if you are running the website locally or push your changes to GitHub if you are using GitHub Pages. All other changes are visible immediately, you only need to refresh the page.
-
-If changes don't appear after refreshing, try:
-
-- **Hard refresh** to reload the page ignoring cached content:
-  - [Shift + F5 on Chromium-based browsers](https://support.google.com/chrome/answer/157179#zippy=%2Cwebpage-shortcuts)
-  - [Ctrl + F5 on Firefox-based browsers](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
-- **Clear your browser cache** completely
-- **Use a private/incognito session** to ensure no cached content:
-  - [Chrome](https://support.google.com/chrome/answer/95464)
-  - [Firefox](https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history)
 
 ## GitHub Copilot Customization Agent
 
@@ -245,7 +209,7 @@ Understanding al-folio's technology stack will help you better customize and ext
 - **JavaScript**: Minimal JavaScript is used for interactive features like the dark mode toggle, search functionality, and dynamic content rendering.
 - **MathJax**: For rendering mathematical equations in LaTeX format on your pages and blog posts.
 - **Mermaid**: For creating diagrams (flowcharts, sequence diagrams, etc.) directly in Markdown.
-- **Font Awesome, Academicons, and Scholar Icons**: Icon libraries used throughout the theme for visual elements.
+- **Font Awesome, Academicons, and Tabler Icons**: Icon libraries used throughout the theme for visual elements.
 
 ### Backend
 
@@ -257,16 +221,16 @@ Understanding al-folio's technology stack will help you better customize and ext
   - Minify CSS and JavaScript
 
 - **Ruby Gems** (Jekyll plugins): The project uses several Ruby plugins to extend Jekyll's functionality:
-  - `classifier-reborn`: Used for categorizing and finding related blog posts
-  - `jekyll-archives-v2`: Creates archive pages for posts and collections organized by category, tag, or date
-  - `jekyll-feed`: Generates an Atom (RSS-like) feed for your content
-  - `jekyll-jupyter-notebook`: Integrates Jupyter notebooks into your site
-  - `jekyll-minifier`: Minifies HTML, CSS, and JavaScript for better performance
-  - `jekyll-paginate-v2`: Handles pagination for blog posts and archives
   - `jekyll-scholar`: Manages bibliography files (BibTeX) and generates publication pages with citations
-  - `jekyll-tabs`: Adds tabbed content support
+  - `jekyll-archives-v2`: Creates archive pages for posts and collections organized by category, tag, or date
+  - `jekyll-paginate-v2`: Handles pagination for blog posts and archives
+  - `jekyll-feed`: Generates an Atom (RSS-like) feed for your content
   - `jekyll-toc`: Automatically generates table of contents for pages with headers
+  - `jekyll-jupyter-notebook`: Integrates Jupyter notebooks into your site
+  - `jekyll-tabs`: Adds tabbed content support
   - `jemoji`: Converts emoji shortcodes to emoji images
+  - `jekyll-minifier`: Minifies HTML, CSS, and JavaScript for better performance
+  - `classifier-reborn`: Used for categorizing and finding related blog posts
   - Other utilities: `jekyll-link-attributes`, `jekyll-imagemagick`, `jekyll-twitter-plugin`, `jekyll-get-json`, and more
 
 - **Python**: Used for utility scripts like citation updates via Google Scholar (located in `bin/`)
@@ -298,64 +262,9 @@ Understanding how these technologies work together will help you customize al-fo
 
 ## Modifying the CV information
 
-Your CV can be created using one of two formats. Choose the format that works best for you, or use both simultaneously by switching between them:
+There are currently 2 different ways of generating the CV page content. The first one is by using a json file located in [assets/json/resume.json](assets/json/resume.json). It is a [known standard](https://jsonresume.org/) for creating a CV programmatically. The second one, currently used as a fallback when the json file is not found, is by using a yml file located in [\_data/cv.yml](_data/cv.yml). This was the original way of creating the CV page content and since it is more human readable than a json file we decided to keep it as an option.
 
-### RenderCV Format (Recommended)
-
-[`_data/cv.yml`](_data/cv.yml) uses the [RenderCV](https://rendercv.com/) YAML format, which is human-readable and designed specifically for generating professional resumes. This format also enables optional automatic PDF generation via GitHub Actions.
-
-**If you choose this format:**
-
-1. Edit your CV data in [`_data/cv.yml`](_data/cv.yml)
-2. Optionally customize how the PDF is styled by editing:
-   - [`assets/rendercv/design.yaml`](assets/rendercv/design.yaml) — Design and styling
-   - [`assets/rendercv/locale.yaml`](assets/rendercv/locale.yaml) — Localization and formatting
-   - [`assets/rendercv/settings.yaml`](assets/rendercv/settings.yaml) — RenderCV settings
-3. To display only this format, delete [`assets/json/resume.json`](assets/json/resume.json) (optional)
-
-### JSONResume Format
-
-[`assets/json/resume.json`](assets/json/resume.json) uses the [JSONResume](https://jsonresume.org/) standard format, which is compatible with other tools and services.
-
-**If you choose this format:**
-
-1. Edit your CV data in [`assets/json/resume.json`](assets/json/resume.json)
-2. To display only this format, delete [`_data/cv.yml`](_data/cv.yml) (optional)
-
-### Using Both Formats Simultaneously
-
-You can keep both [`_data/cv.yml`](_data/cv.yml) and [`assets/json/resume.json`](assets/json/resume.json) in your repository and switch between them on your website by setting the `cv_format` frontmatter variable in [`_pages/cv.md`](_pages/cv.md):
-
-```yaml
----
-layout: cv
-cv_format: rendercv # options: rendercv or jsonresume
----
-```
-
-Change `rendercv` to `jsonresume` to display the JSONResume format instead.
-
-### Automatic PDF Generation (RenderCV only)
-
-If you use the RenderCV format, a GitHub Actions workflow can automatically generate a PDF version of your CV whenever you push changes to [`_data/cv.yml`](_data/cv.yml). The PDF is saved to `assets/rendercv/rendercv_output/`.
-
-**To link the auto-generated PDF to your CV page:**
-
-Set the `cv_pdf` variable in the frontmatter of [`_pages/cv.md`](_pages/cv.md) to point to the generated PDF:
-
-```yaml
----
-layout: cv
-cv_pdf: /assets/rendercv/rendercv_output/CV.pdf
-cv_format: rendercv
----
-```
-
-This will add a download button on your CV page that links to the PDF. (The exact filename depends on your RenderCV settings—check the output directory after the first workflow run to see the generated PDF name.)
-
-**To disable automatic PDF generation:**
-
-Delete or comment out the [`.github/workflows/render-cv.yml`](.github/workflows/render-cv.yml) workflow file.
+What this means is, if there is no resume data defined in [\_config.yml](_config.yml) and loaded via a json file, it will load the contents of [\_data/cv.yml](_data/cv.yml). If you want to use the [\_data/cv.yml](_data/cv.yml) file as the source of your CV, you must delete the [assets/json/resume.json](assets/json/resume.json) file.
 
 ## Modifying the user and repository information
 
@@ -407,166 +316,13 @@ You can add news in the about page by adding new Markdown files in the [\_news](
 
 ## Adding Collections
 
-This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on the projects page, and items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`.
+This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on projects page and items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`.
 
-You can easily create your own collections for any type of content—teaching materials, courses, apps, short stories, or whatever suits your needs.
+You can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the [\_config.yml](_config.yml) file, create a corresponding folder, and create a landing page for your collection, similar to [\_pages/projects.md](_pages/projects.md).
 
-### Creating a new collection
+If you wish to create a collection with support for categories and tags, like the blog posts, you just need to add this collection to the `jekyll-archives` section of your [\_config.yml](_config.yml) file. You can check how this is done with the `books` collection. For more information about customizing the archives section or creating your own archives page, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
-To create a new collection, follow these steps. We will create a `courses` collection, but you can replace `courses` with any name you prefer:
-
-1. **Add the collection to `_config.yml`**
-
-   Open the `collections` section in [\_config.yml](_config.yml) and add your new collection:
-
-   ```yaml
-   collections:
-     news:
-       defaults:
-         layout: post
-       output: true
-     projects:
-       output: true
-     courses:
-       output: true
-       permalink: /courses/:path/
-   ```
-
-   - `output: true` makes the collection items accessible as separate pages
-   - `permalink` defines the URL path for each collection item (`:path` is replaced with the filename)
-     - Note: You can customize the [permalink structure](https://jekyllrb.com/docs/permalinks/#collections) as needed. If not set, it uses `/COLLECTION_NAME/:name/`.
-
-2. **Create a folder for your collection items**
-
-   Create a new folder in the root directory with an underscore prefix, matching your collection name. For a `courses` collection, create `_courses/`:
-
-   ```text
-   _courses/
-   ├── course_1.md
-   ├── course_2.md
-   └── course_3.md
-   ```
-
-3. **Create a landing page for your collection**
-
-   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](_pages/projects.md) or [\_pages/books.md](_pages/books.md) as a template and adapt it for your needs.
-
-   In your landing page, access your collection using the `site.COLLECTION_NAME` variable:
-
-   ```liquid
-   {% assign course_items = site.courses | sort: 'date' | reverse %}
-
-   {% for item in course_items %}
-     <h3>{{ item.title }}</h3>
-     <p>{{ item.content }}</p>
-   {% endfor %}
-   ```
-
-4. **Add a navigation link to your collection page**
-
-   Update [\_pages/dropdown.md](_pages/dropdown.md) or the navigation configuration of your page. In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
-
-   ```yaml
-   nav: true
-   nav_order: 5
-   ```
-
-   - `nav: true` makes the page appear in the navigation menu
-   - `nav_order` sets the position in the menu (1 = first, 2 = second, etc.)
-
-5. **Create collection items**
-
-   Add Markdown files in your new collection folder (e.g., `_courses/`) with appropriate frontmatter and content.
-
-For more information regarding collections, check [Jekyll official documentation](https://jekyllrb.com/docs/collections/) and [step-by-step guide](https://jekyllrb.com/docs/step-by-step/09-collections/).
-
-### Using frontmatter fields in your collection
-
-When creating items in your collection, you can define custom frontmatter fields and use them in your landing page. For example:
-
-```markdown
----
-layout: page
-title: Introduction to Research Methods
-importance: 1
-category: methods
----
-
-Course description and content here...
-```
-
-Then in your landing page template:
-
-```liquid
-{% if item.category == 'methods' %}
-  <span class="badge">{{ item.category }}</span>
-{% endif %}
-```
-
-### Creating a teachings collection
-
-The al-folio theme includes a pre-configured `_teachings/` collection for course pages. Each course is represented by a markdown file with frontmatter metadata. Here's how to add or modify courses:
-
-#### Course file format
-
-Create markdown files in `_teachings/` with the following structure:
-
-```yaml
----
-layout: course
-title: Course Title
-description: Course description
-instructor: Your Name
-year: 2023
-term: Fall
-location: Room 101
-time: MWF 10:00-11:00
-course_id: course-id # This should be unique
-schedule:
-  - week: 1
-    date: Jan 10
-    topic: Introduction
-    description: Overview of course content and objectives
-    materials:
-      - name: Slides
-        url: /assets/pdf/example_pdf.pdf
-      - name: Reading
-        url: https://example.com/reading
-  - week: 2
-    date: Jan 17
-    topic: Topic 2
-    description: Description of this week's content
----
-Additional course content, information, or resources can be added here as markdown.
-```
-
-#### Important course collection notes
-
-1. Each course file must have a unique `course_id` in the frontmatter
-2. Course files will be grouped by `year` on the teaching page
-3. Within each year, courses are sorted by `term`
-4. The content below the frontmatter (written in markdown) will appear on the individual course page
-5. The schedule section will be automatically formatted into a table
-
-#### Required fields
-
-- `layout: course` — Must be set to use the course layout
-- `title` — The course title
-- `year` — The year the course was/will be taught (used for sorting)
-- `course_id` — A unique identifier for the course
-
-#### Optional fields
-
-- `description` — A brief description of the course
-- `instructor` — The course instructor's name
-- `term` — The academic term (e.g., Fall, Spring, Summer)
-- `location` — The course location
-- `time` — The course meeting time
-- `schedule` — A list of course sessions with details
-
-### Collections with categories and tags
-
-If you want to add category and tag support (like the blog posts have), you need to configure the `jekyll-archives` section in [\_config.yml](_config.yml). See how this is done with the `books` collection for reference. For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
+To access the collections, you can use the `site.COLLECTION_NAME` variable in your templates.
 
 ## Adding a new publication
 
@@ -641,36 +397,20 @@ A variety of beautiful theme colors have been selected for you to choose from. T
 You can customize the layout and user interface in [\_config.yml](_config.yml):
 
 ```yaml
-back_to_top: true
-footer_fixed: true
-max_width: 930px
 navbar_fixed: true
+footer_fixed: true
+back_to_top: true
+max_width: 930px
 ```
 
-- `back_to_top`: Displays a "back to top" button in the footer. When clicked, it smoothly scrolls the page back to the top.
-- `footer_fixed`: When `true`, the footer remains fixed at the bottom of the viewport. When `false`, it appears at the end of the page content.
-- `max_width`: Controls the maximum width of the main content area in pixels. The default is `930px`. You can adjust this to make your content wider or narrower.
 - `navbar_fixed`: When `true`, the navigation bar stays fixed at the top of the page when scrolling. When `false`, it scrolls with the page content.
+- `footer_fixed`: When `true`, the footer remains fixed at the bottom of the viewport. When `false`, it appears at the end of the page content.
+- `back_to_top`: Displays a "back to top" button in the footer. When clicked, it smoothly scrolls the page back to the top.
+- `max_width`: Controls the maximum width of the main content area in pixels. The default is `930px`. You can adjust this to make your content wider or narrower.
 
 ## Adding social media information
 
-Social media information is managed through the [`jekyll-socials` plugin](https://github.com/george-gca/jekyll-socials). To add your social media links:
-
-1. Edit [`_data/socials.yml`](_data/socials.yml) to add your social profiles
-2. The plugin will automatically display the social icons based on the order they are defined in the file (see the comments at the top of `_data/socials.yml`)
-
-The template supports icons from:
-
-- [Academicons](https://jpswalsh.github.io/academicons/)
-- [Font Awesome](https://fontawesome.com/)
-- [Scholar Icons](https://louisfacun.github.io/scholar-icons/)
-
-Social media links will appear at the bottom of the `About` page and in the search results by default. You can customize this behavior in [`_config.yml`](_config.yml):
-
-- `enable_navbar_social: true` – Display social links in the navigation bar
-- `socials_in_search: false` – Remove social links from search results
-
-For more details, see the [`jekyll-socials` documentation](https://github.com/george-gca/jekyll-socials).
+You can add your social media links by adding the specified information in the [\_data/socials.yml](_data/socials.yml) file. This information will appear at the bottom of the `About` page and in the search results by default, but this could be changed to appear at the header of the page by setting `enable_navbar_social: true` and doesn't appear in the search by setting `socials_in_search: false`, both in [\_config.yml](_config.yml).
 
 ## Adding a newsletter
 
@@ -683,16 +423,16 @@ Depending on your specified footer behavior, the sign up form either will appear
 The theme includes a powerful search functionality that can be customized in [\_config.yml](_config.yml):
 
 ```yaml
-bib_search: true
-posts_in_search: true
 search_enabled: true
 socials_in_search: true
+posts_in_search: true
+bib_search: true
 ```
 
-- `bib_search`: Enables search within your publications/bibliography. When enabled, a search box appears on the publications page, allowing visitors to filter publications by title, author, venue, or year.
-- `posts_in_search`: Includes blog posts in the search index. Users can search for posts by title, content, or tags.
 - `search_enabled`: Enables the site-wide search feature. When enabled, a search box appears in the navigation bar, allowing users to search across your site content.
 - `socials_in_search`: Includes your social media links and contact information in search results. This makes it easier for visitors to find ways to connect with you.
+- `posts_in_search`: Includes blog posts in the search index. Users can search for posts by title, content, or tags.
+- `bib_search`: Enables search within your publications/bibliography. When enabled, a search box appears on the publications page, allowing visitors to filter publications by title, author, venue, or year.
 
 All these search features work in real-time and do not require a page reload.
 
@@ -724,47 +464,6 @@ To add a thumbnail to a publication, include a `preview` field in your BibTeX en
 
 Place the image file in `assets/img/publication_preview/`.
 
-## Adding a Google Calendar
-
-You can embed a Google Calendar on any page by using the `calendar.liquid` include.
-
-### Basic usage
-
-Add the following to your page's Markdown file (for example, in `_pages/teaching.md`):
-
-```liquid
-{% include calendar.liquid calendar_id='your-calendar-id@group.calendar.google.com' timezone='Your/Timezone' %}
-```
-
-Replace:
-
-- `your-calendar-id@group.calendar.google.com` with your actual Google Calendar ID (found in Google Calendar Settings → Integrate calendar → Calendar ID)
-- `Your/Timezone` with your timezone (e.g., `UTC`, `Asia/Shanghai`, `America/New_York`). The default is `UTC`.
-
-### Enable the calendar script for your page
-
-To enable the calendar on your page, add `calendar: true` to the frontmatter:
-
-```yaml
----
-layout: page
-title: teaching
-calendar: true
----
-```
-
-This setting prevents unnecessary script loading for pages that don't display a calendar.
-
-### Optional: Customize the calendar style
-
-You can optionally customize the iframe styling using the `style` parameter:
-
-```liquid
-{% include calendar.liquid calendar_id='your-calendar-id@group.calendar.google.com' timezone='UTC' style='border:0; width:100%; height:800px;' %}
-```
-
-The default style is `border:0; width:100%; height:600px;`.
-
 ## Updating third-party libraries
 
 The theme uses various third-party JavaScript and CSS libraries. You can manage these in the `third_party_libraries` section of [\_config.yml](_config.yml):
@@ -784,7 +483,7 @@ third_party_libraries:
 
 - `download`: When `false` (default), libraries are loaded from CDNs. When `true`, the specified library versions are downloaded during build and served from your site. This can improve performance but increases your repository size.
 - `version`: Specifies which version of each library to use. Update this to use a newer version.
-- `url`: Template URLs for loading the library. The `{{version}}` placeholder is replaced with the version number automatically.
+- `url`: Template URLs for loading the library. The `{{version}}` placeholder is replaced with the version number.
 - `integrity`: [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) hashes ensure that the library hasn't been tampered with. When updating a library version, you should also update its integrity hash.
 
 To update a library:
@@ -802,6 +501,7 @@ To update a library:
      For detailed instructions on updating specific libraries, see the FAQ:
      - [How can I update Academicons version](FAQ.md#how-can-i-update-academicons-version-on-the-template)
      - [How can I update Font Awesome version](FAQ.md#how-can-i-update-font-awesome-version-on-the-template)
+     - [How can I update Tabler Icons version](FAQ.md#how-can-i-update-tabler-icons-version-on-the-template)
 
 ## Removing content
 
@@ -889,7 +589,7 @@ To remove the repositories, you can:
 
 ### You can also remove pages through commenting out front-matter blocks
 
-For `.md` files in [\_pages](_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
+For `.md` files in [\pages](_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
 
 For example, books.md do:
 
@@ -924,18 +624,7 @@ Due to the necessary permissions (PAT and others mentioned above), it is recomme
 
 ## Customizing fonts, spacing, and more
 
-The `_sass/` directory contains specialized SCSS files organized by feature and usage. To customize fonts, spacing, colors, and other styles, edit the relevant file based on what you're modifying:
-
-- **Typography:** Edit `_typography.scss` to change fonts, heading styles, links, tables, and blockquotes.
-- **Navigation:** Edit `_navbar.scss` to customize the navigation bar and dropdown menus.
-- **Colors and themes:** Edit `_themes.scss` to change theme colors and `_variables.scss` for global variables.
-- **Blog styles:** Edit `_blog.scss` to customize blog post listings, tags, and pagination.
-- **Publications:** Edit `_publications.scss` to modify bibliography and publication display styles.
-- **Components:** Edit `_components.scss` to customize reusable components like cards, profiles, and projects.
-- **Code and utilities:** Edit `_utilities.scss` for code highlighting, forms, modals, and animations.
-- **Layout:** Edit `_layout.scss` for overall page layout styles.
-
-The easiest way to preview changes in advance is by using [Chrome dev tools](https://developer.chrome.com/docs/devtools/css) or [Firefox dev tools](https://firefox-source-docs.mozilla.org/devtools-user/). Inspect elements to see which styles apply and experiment with changes before editing the SCSS files. For more information on how to use these tools, check [Chrome](https://developer.chrome.com/docs/devtools/css) and [Firefox](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_and_edit_css/index.html) how-tos, and [this tutorial](https://www.youtube.com/watch?v=l0sgiwJyEu4).
+You can customize the fonts, spacing, and more by editing [\_sass/\_base.scss](_sass/_base.scss). The easiest way to try in advance the changes is by using [chrome dev tools](https://developer.chrome.com/docs/devtools/css) or [firefox dev tools](https://firefox-source-docs.mozilla.org/devtools-user/). In there you can click in the element and find all the attributes that are set for that element and where are they. For more information on how to use this, check [chrome](https://developer.chrome.com/docs/devtools/css) and [firefox](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_and_edit_css/index.html) how-tos, and [this tutorial](https://www.youtube.com/watch?v=l0sgiwJyEu4).
 
 ## Scheduled Posts
 
