@@ -24,7 +24,7 @@
     let mouseOnScreen = false;
     const robots = [];
     const NUM_ROBOTS = 50;
-    const ROBOT_OPACITY = 0.4;
+    const ROBOT_OPACITY = 0.1;
     
     // Pulsation settings
     let pulsePhase = 0;
