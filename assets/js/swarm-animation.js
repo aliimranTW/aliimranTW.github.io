@@ -6,6 +6,13 @@
 (function() {
     'use strict';
     
+    // Disable swarm animation on mobile devices (no mouse interaction anyway)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches)
+        || ('ontouchstart' in window && !window.matchMedia('(pointer: fine)').matches);
+    
+    if (isMobile) return;
+    
     const canvas = document.getElementById('swarm-canvas');
     if (!canvas) return;
     
