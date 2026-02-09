@@ -37,7 +37,8 @@ I am currently a PhD candidate at <a href='https://initrobots.ca'>Lab INIT Robot
 <!-- My technical experience spans developing AI algorithms and deploying them on embedded hardware (e.g., NVIDIA Jetson), as well as robot hardware development and rapid prototyping. I also enjoy teaching and mentoring, and I have taught robotics to undergraduates and supervised master’s students. Broadly, my research focuses on human-centric robotics in shared environments, using decentralized robot teams for collaborative perception—from spatio-temporal human intent prediction to joint human–robot state estimation for decentralized human motion modeling and navigation. By combining multimodal sensing with decentralized learning, I aim to build richer scene understanding and enable robust, safety-aware coordination, validated on real multi-robot systems. -->
 
 
-I build human-centric multi-robot systems that can operate safely in shared spaces. My work combines AI for collaborative perception with real-world deployment—often on embedded hardware (e.g., NVIDIA Jetson)—and hands-on robot prototyping. I also enjoy teaching and mentoring. I have taught robotics to undergraduates and supervised master’s students.
+<!-- I build human-centric multi-robot systems that can operate safely in shared spaces. -->
+My work combines AI for collaborative perception with real-world deployment—often on embedded hardware (e.g., NVIDIA Jetson)—and hands-on robot prototyping. I also enjoy teaching and mentoring. I have taught robotics to undergraduates and supervised master’s students.
 
 <p class="swarm-hint">Move your mouse around to play with the swarm. Watch them flock using simple swarming rules like attraction and repulsion. :)</p>
 
